@@ -1,0 +1,111 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Privacy Policy - Sasha Navruzova" description="Privacy Policy for Sasha Navruzova's portfolio and services">
+  <Header />
+  <main class="py-20">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="prose prose-lg max-w-none">
+        <h1 class="text-4xl font-bold text-gray-900 mb-8">Privacy Policy</h1>
+        
+        <div class="bg-gray-50 p-6 rounded-lg mb-8">
+          <p class="text-sm text-gray-600">
+            <strong>Last updated:</strong> {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+          </p>
+        </div>
+
+        <p class="text-lg text-gray-700 mb-6">
+          Thank you for visiting my portfolio website. I value your privacy and am committed to complying with all applicable data protection laws, including the General Data Protection Regulation (GDPR). This Privacy Policy explains what data I collect, how I use it, and the steps I take to protect your personal information.
+        </p>
+
+        <h2>1. Information I Collect</h2>
+        <p>This portfolio website does not require an account and does not collect any personally identifiable information from users. The website functions independently without storing or transmitting any personal information.</p>
+
+        <h2>2. How I Use the Data</h2>
+        <p>Since I do not collect any data, there is no data to use. The website functions independently without storing or transmitting any personal information.</p>
+
+        <h2>3. Third-Party Services</h2>
+        <p>This website may use third-party services for analytics or hosting purposes. These services may collect certain information from your device, such as IP addresses and usage data, for the purpose of providing their services. For more details on how these services handle your data, please refer to their respective Privacy Policies.</p>
+
+        <h2>4. Permissions</h2>
+        <p>This website does not request any special permissions from your device. All functionality is standard web browsing.</p>
+
+        <h2>5. Cookies and Tracking</h2>
+        <p>This website does not use cookies or other tracking technologies to monitor your activity. However, third-party services may use cookies for their functionality.</p>
+
+        <h2>6. Age Restrictions</h2>
+        <p>This website does not have any age restrictions and is suitable for all users.</p>
+
+        <h2>7. Your Rights Under GDPR</h2>
+        <p>As a resident of the European Union, you have the following rights regarding your personal data:</p>
+        <ul>
+          <li><strong>Right to be informed:</strong> You have the right to be informed about the collection and use of your personal data.</li>
+          <li><strong>Right of access:</strong> You have the right to access your personal data.</li>
+          <li><strong>Right to rectification:</strong> You have the right to have inaccurate personal data rectified.</li>
+          <li><strong>Right to erasure:</strong> You have the right to have your personal data erased.</li>
+          <li><strong>Right to restrict processing:</strong> You have the right to restrict the processing of your personal data.</li>
+          <li><strong>Right to data portability:</strong> You have the right to receive your personal data in a structured, commonly used format.</li>
+          <li><strong>Right to object:</strong> You have the right to object to the processing of your personal data.</li>
+        </ul>
+
+        <h2>8. Data Retention</h2>
+        <p>Since I do not collect personal data, there is no data to retain. Any information collected by third-party services is subject to their own retention policies.</p>
+
+        <h2>9. Data Security</h2>
+        <p>I implement appropriate technical and organizational measures to protect any data that may be processed, ensuring a level of security appropriate to the risk.</p>
+
+        <h2>10. International Data Transfers</h2>
+        <p>This website is hosted on servers that may be located outside the European Economic Area (EEA). Any such transfers are made in compliance with GDPR requirements and appropriate safeguards.</p>
+
+        <h2>11. Changes to This Privacy Policy</h2>
+        <p>I may update this Privacy Policy from time to time. Any changes will be posted on this website, and the latest version will always be available here. I encourage you to periodically review the Privacy Policy for any updates.</p>
+
+        <h2>12. Contact Me</h2>
+        <p>If you have any questions about this Privacy Policy or would like to exercise your GDPR rights, please contact me at:</p>
+
+        <div class="bg-blue-50 p-6 rounded-lg mt-8">
+          <h3 class="text-lg font-semibold text-blue-900 mb-2">Contact Information</h3>
+          <p class="text-blue-800">
+            <strong>Name:</strong> Sasha Navruzova<br>
+            <strong>Email:</strong> alnavruzova@gmail.com<br>
+            <strong>Location:</strong> Berlin, Germany<br>
+            <strong>Data Protection Officer:</strong> Sasha Navruzova (same contact details)
+          </p>
+        </div>
+
+        <div class="bg-yellow-50 p-6 rounded-lg mt-8">
+          <h3 class="text-lg font-semibold text-yellow-900 mb-2">Supervisory Authority</h3>
+          <p class="text-yellow-800">
+            If you are not satisfied with my response to your privacy concerns, you have the right to lodge a complaint with your local data protection supervisory authority. In Germany, this is the <strong>Bundesbeauftragte für den Datenschutz und die Informationsfreiheit (BfDI)</strong>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .prose h2 {
+    @apply text-2xl font-bold text-gray-900 mt-8 mb-4;
+  }
+  
+  .prose h3 {
+    @apply text-xl font-semibold text-gray-800 mt-6 mb-3;
+  }
+  
+  .prose p {
+    @apply text-gray-700 mb-4 leading-relaxed;
+  }
+  
+  .prose ul {
+    @apply text-gray-700 mb-4 pl-6;
+  }
+  
+  .prose li {
+    @apply mb-2;
+  }
+</style>

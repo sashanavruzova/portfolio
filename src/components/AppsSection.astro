@@ -1,0 +1,74 @@
+---
+import AppCard from './AppCard.astro';
+
+// App data - you can expand this with more apps
+const apps = [
+  {
+    name: "Verbly - Learn Hebrew",
+    description: "Master Hebrew Verbs One Day at a Time! Learn essential Hebrew verbs daily with an intuitive and stress-free approach. Features daily verbs, flashcards, progress tracking, and offline learning.",
+    icon: "📚",
+    appStoreUrl: "https://apps.apple.com/il/app/learn-hebrew-daily-verbs-app/id6723894973",
+    category: "Education",
+    price: "Free",
+    rating: 5.0,
+    downloads: "1K+"
+  }
+  // Add more apps here as you develop them
+];
+---
+
+<section id="apps" class="py-20 bg-gray-50">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16 animate-fade-in-up">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+        My Apps 🚀
+      </h2>
+      <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+        Here are the mobile apps I've built to help people learn, grow, and be more productive.
+      </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {apps.map((app, index) => (
+        <div class="animate-fade-in-up" style={`animation-delay: ${index * 0.1}s`}>
+          <AppCard {...app} />
+        </div>
+      ))}
+    </div>
+    
+    <div class="text-center mt-12 animate-fade-in-up-delay-1">
+      <p class="text-gray-600 mb-4">
+        More apps coming soon! 🎯
+      </p>
+      <a 
+        href="mailto:alnavruzova@gmail.com" 
+        class="inline-flex items-center px-6 py-3 border-2 border-primary text-primary font-medium rounded-lg hover:bg-primary hover:text-white transition-all duration-300 hover:scale-105"
+      >
+        💡 Have an idea? Let's talk!
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+    opacity: 0;
+  }
+
+  .animate-fade-in-up-delay-1 {
+    animation: fadeInUp 0.8s ease-out 0.3s forwards;
+    opacity: 0;
+  }
+</style>
