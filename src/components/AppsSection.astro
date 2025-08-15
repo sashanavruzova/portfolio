@@ -1,23 +1,51 @@
 ---
 import AppCard from './AppCard.astro';
+import { fetchMultipleApps, getUserCountry } from '../utils/appStore';
 
-// App data - you can expand this with more apps
-const apps = [
-  {
-    name: "Verbly - Learn Hebrew",
-    description: "Master Hebrew Verbs One Day at a Time! Learn essential Hebrew verbs daily with an intuitive and stress-free approach. Features daily verbs, flashcards, progress tracking, and offline learning.",
-    icon: "📚",
-    appStoreUrl: "https://apps.apple.com/il/app/learn-hebrew-daily-verbs-app/id6723894973",
-    category: "Education",
-    price: "Free",
-    rating: 5.0,
-    downloads: "1K+"
-  }
-  // Add more apps here as you develop them
+// App IDs from App Store URLs
+const appIds = [
+  "6723894973" // Verbly - Learn Hebrew
+  // Add more app IDs here as you develop them
 ];
+
+// Get user's country for personalized data
+const userCountry = getUserCountry();
+
+// Fetch app data from App Store
+let apps: any[] = [];
+try {
+  apps = await fetchMultipleApps(appIds, userCountry);
+} catch (error) {
+  console.error('Error fetching apps:', error);
+  // Fallback to static data if API fails
+  apps = [{
+    trackId: "6723894973",
+    trackName: "Verbly - Learn Hebrew",
+    description: "Master Hebrew Verbs One Day at a Time! Learn essential Hebrew verbs daily with an intuitive and stress-free approach. Features daily verbs, flashcards, progress tracking, and offline learning.",
+    artworkUrl100: "/verbly-icon.png", // Fallback icon
+    averageUserRating: 5.0,
+    userRatingCount: 1,
+    price: 0,
+    formattedPrice: "Free",
+    primaryGenreName: "Education",
+    trackViewUrl: "https://apps.apple.com/il/app/learn-hebrew-daily-verbs-app/id6723894973",
+    country: "us",
+    currency: "USD"
+  }];
+}
+
+// Country display names
+const countryNames: { [key: string]: string } = {
+  'us': 'United States',
+  'il': 'Israel',
+  'de': 'Germany',
+  'gb': 'United Kingdom',
+  'ca': 'Canada',
+  'au': 'Australia'
+};
 ---
 
-<section id="apps" class="py-20 bg-gray-50">
+<section id="apps" class="py-20 bg-white">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center mb-16 animate-fade-in-up">
       <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
@@ -26,12 +54,32 @@ const apps = [
       <p class="text-xl text-gray-600 max-w-2xl mx-auto">
         Here are the mobile apps I've built to help people learn, grow, and be more productive.
       </p>
+      
+      {/* Show which store data is being displayed */}
+      {apps.length > 0 && apps[0].country && (
+        <div class="mt-4 inline-flex items-center px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm">
+          <span class="mr-2">📍</span>
+          <span>Showing data from {countryNames[apps[0].country] || apps[0].country.toUpperCase()} App Store</span>
+        </div>
+      )}
     </div>
     
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       {apps.map((app, index) => (
         <div class="animate-fade-in-up" style={`animation-delay: ${index * 0.1}s`}>
-          <AppCard {...app} />
+          <AppCard 
+            name={app.trackName}
+            description={app.description}
+            icon={app.artworkUrl100}
+            appStoreUrl={app.trackViewUrl}
+            category={app.primaryGenreName}
+            price={app.formattedPrice}
+            rating={app.averageUserRating}
+            downloads={`${app.userRatingCount}+`}
+            isRealData={true}
+            country={app.country}
+            currency={app.currency}
+          />
         </div>
       ))}
     </div>
@@ -49,26 +97,3 @@ const apps = [
     </div>
   </div>
 </section>
-
-<style>
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(30px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  .animate-fade-in-up {
-    animation: fadeInUp 0.8s ease-out forwards;
-    opacity: 0;
-  }
-
-  .animate-fade-in-up-delay-1 {
-    animation: fadeInUp 0.8s ease-out 0.3s forwards;
-    opacity: 0;
-  }
-</style>

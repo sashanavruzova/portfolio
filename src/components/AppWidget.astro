@@ -1,0 +1,76 @@
+---
+import { fetchAppFromAppStore } from '../utils/appStore';
+
+export interface Props {
+  appId: string;
+  showRating?: boolean;
+  showDescription?: boolean;
+  compact?: boolean;
+}
+
+const { appId, showRating = true, showDescription = true, compact = false } = Astro.props;
+
+// Fetch app data
+let app: any = null;
+try {
+  app = await fetchAppFromAppStore(appId);
+} catch (error) {
+  console.error('Error fetching app:', error);
+}
+---
+
+{app && (
+  <div class={`bg-white rounded-lg shadow-md border border-purple-100 overflow-hidden ${compact ? 'p-3' : 'p-4'}`}>
+    <div class="flex items-center space-x-3">
+      <img 
+        src={app.artworkUrl100} 
+        alt={`${app.trackName} icon`}
+        class={`${compact ? 'w-12 h-12' : 'w-16 h-16'} rounded-lg object-cover`}
+        loading="lazy"
+      />
+      
+      <div class="flex-1 min-w-0">
+        <h3 class={`font-semibold text-gray-900 ${compact ? 'text-sm' : 'text-base'} truncate`}>
+          {app.trackName}
+        </h3>
+        
+        {showDescription && (
+          <p class={`text-gray-600 ${compact ? 'text-xs' : 'text-sm'} line-clamp-2 mt-1`}>
+            {app.description}
+          </p>
+        )}
+        
+        <div class="flex items-center justify-between mt-2">
+          <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
+            {app.primaryGenreName}
+          </span>
+          
+          {showRating && app.averageUserRating > 0 && (
+            <div class="flex items-center space-x-1">
+              <span class="text-yellow-400 text-sm">⭐</span>
+              <span class="text-xs text-gray-600">{app.averageUserRating.toFixed(1)}</span>
+            </div>
+          )}
+        </div>
+        
+        <div class="flex items-center justify-between mt-2">
+          <span class="text-sm font-medium text-gray-500">{app.formattedPrice}</span>
+          <a 
+            href={app.trackViewUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class={`inline-flex items-center px-3 py-1 bg-primary text-white text-xs font-medium rounded-md hover:bg-primary/90 transition-colors ${compact ? 'px-2 py-1' : 'px-3 py-1'}`}
+          >
+            {compact ? 'View' : 'View on App Store'}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+)}
+
+{!app && (
+  <div class="bg-gray-50 rounded-lg p-4 text-center text-gray-500">
+    <p>App information not available</p>
+  </div>
+)}

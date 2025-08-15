@@ -1,0 +1,62 @@
+---
+import Layout from '../layouts/Layout.astro';
+import AppWidget from '../components/AppWidget.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="App Widget Demo - Sasha Navruzova" description="Demo of the AppWidget component that fetches real-time App Store data">
+  <main class="py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h1 class="text-4xl font-bold text-gray-900 mb-4">
+          App Widget Demo 🎯
+        </h1>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+          This page demonstrates the AppWidget component that fetches real-time data from the App Store.
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+        <div>
+          <h2 class="text-2xl font-bold text-gray-900 mb-4">Full Widget</h2>
+          <AppWidget 
+            appId="6723894973" 
+            showRating={true} 
+            showDescription={true} 
+            compact={false}
+          />
+        </div>
+        
+        <div>
+          <h2 class="text-2xl font-bold text-gray-900 mb-4">Compact Widget</h2>
+          <AppWidget 
+            appId="6723894973" 
+            showRating={true} 
+            showDescription={false} 
+            compact={true}
+          />
+        </div>
+      </div>
+      
+      <div class="bg-gray-50 p-8 rounded-xl border border-gray-200">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">How It Works</h2>
+        <div class="space-y-4 text-gray-700">
+          <p>
+            <strong>Real-time Data:</strong> The widget fetches live information from Apple's iTunes Search API, including:
+          </p>
+          <ul class="list-disc list-inside space-y-2 ml-4">
+            <li>App icon (high-resolution artwork)</li>
+            <li>Current rating and review count</li>
+            <li>Latest description and metadata</li>
+            <li>Current price and availability</li>
+            <li>Category and genre information</li>
+          </ul>
+          <p class="mt-4">
+            <strong>Usage:</strong> Simply pass the App Store ID to display any app's information dynamically.
+          </p>
+        </div>
+      </div>
+    </div>
+  </main>
+  <Footer />
+</Layout>

@@ -1,17 +1,15 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 ---
 
 <Layout title="Privacy Policy - Sasha Navruzova" description="Privacy Policy for Sasha Navruzova's portfolio and services">
-  <Header />
-  <main class="py-20">
+  <main class="py-20 bg-white">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="prose prose-lg max-w-none">
         <h1 class="text-4xl font-bold text-gray-900 mb-8">Privacy Policy</h1>
         
-        <div class="bg-gray-50 p-6 rounded-lg mb-8">
+        <div class="bg-gray-50 p-6 rounded-lg mb-8 border border-gray-200">
           <p class="text-sm text-gray-600">
             <strong>Last updated:</strong> {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
           </p>
@@ -66,7 +64,7 @@ import Footer from '../components/Footer.astro';
         <h2>12. Contact Me</h2>
         <p>If you have any questions about this Privacy Policy or would like to exercise your GDPR rights, please contact me at:</p>
 
-        <div class="bg-blue-50 p-6 rounded-lg mt-8">
+        <div class="bg-blue-50 p-6 rounded-lg mt-8 border border-blue-200">
           <h3 class="text-lg font-semibold text-blue-900 mb-2">Contact Information</h3>
           <p class="text-blue-800">
             <strong>Name:</strong> Sasha Navruzova<br>
@@ -76,7 +74,7 @@ import Footer from '../components/Footer.astro';
           </p>
         </div>
 
-        <div class="bg-yellow-50 p-6 rounded-lg mt-8">
+        <div class="bg-yellow-50 p-6 rounded-lg mt-8 border border-yellow-200">
           <h3 class="text-lg font-semibold text-yellow-900 mb-2">Supervisory Authority</h3>
           <p class="text-yellow-800">
             If you are not satisfied with my response to your privacy concerns, you have the right to lodge a complaint with your local data protection supervisory authority. In Germany, this is the <strong>Bundesbeauftragte für den Datenschutz und die Informationsfreiheit (BfDI)</strong>.
