@@ -6,19 +6,19 @@ const currentPath = Astro.url.pathname;
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between items-center h-16">
       <div class="flex items-center">
-        <a href="/" class="text-xl font-bold text-gray-900 hover:text-primary transition-colors duration-300">
+        <a href={import.meta.env.BASE_URL + "/"} class="text-xl font-bold text-gray-900 hover:text-primary transition-colors duration-300">
           Sasha Navruzova
         </a>
       </div>
       
       <nav class="hidden md:flex space-x-8">
-        <a href="/" class={`text-sm font-medium transition-colors duration-300 ${currentPath === '/' ? 'text-primary' : 'text-gray-600 hover:text-primary'}`}>
+        <a href={import.meta.env.BASE_URL + "/"} class={`text-sm font-medium transition-colors duration-300 ${currentPath === '/' ? 'text-primary' : 'text-gray-600 hover:text-primary'}`}>
           Home
         </a>
-        <a href="/terms" class={`text-sm font-medium transition-colors duration-300 ${currentPath === '/terms' ? 'text-primary' : 'text-gray-600 hover:text-primary'}`}>
+        <a href={import.meta.env.BASE_URL + "/terms"} class={`text-sm font-medium transition-colors duration-300 ${currentPath === '/terms' ? 'text-primary' : 'text-gray-600 hover:text-primary'}`}>
           Terms
         </a>
-        <a href="/privacy" class={`text-sm font-medium transition-colors duration-300 ${currentPath === '/privacy' ? 'text-primary' : 'text-gray-600 hover:text-primary'}`}>
+        <a href={import.meta.env.BASE_URL + "/privacy"} class={`text-sm font-medium transition-colors duration-300 ${currentPath === '/privacy' ? 'text-primary' : 'text-gray-600 hover:text-primary'}`}>
           Privacy
         </a>
       </nav>

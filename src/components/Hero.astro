@@ -1,6 +1,6 @@
 ---
-// Use the correct path for the profile image
-const profileImage = "/profile.png";
+// Use the correct path for the profile image with base path support
+const profileImage = import.meta.env.BASE_URL + "/profile.png";
 ---
 
 <section class="bg-white py-20">
